@@ -69,22 +69,24 @@ window.createGraphic = function(graphicSelector) {
 			var t = d3.transition()
 				.duration(800)
 				.ease(d3.easeQuadInOut)
-
 			// circles are sized
 			var item = graphicVisEl.selectAll('.item')
-			
 			item.select('circle')
 				.transition(t)
 				.delay(function(d, i) { return i * 200 })
 				.attr('r', function(d, i) {
 					return scaleR(d)
 				})
-
 			item.select('text')
 				.transition(t)
 				.delay(function(d, i) { return i * 200 })
 				.style('opacity', 1)
 		},
+		// Step 3
+		function step3() {
+			// update html inside graphic_vis
+			graphicVisEl.html('<iframe src="./sections/airbnb.html"></iframe>')
+		}
 	]
 
 	// update our chart
