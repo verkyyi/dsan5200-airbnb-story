@@ -46,20 +46,17 @@ toc: false
 
 <div class="hero">
   <h1>Airbnb Price in DC</h1>
-  <h2>Welcome to your new project! Edit&nbsp;<code style="font-size: 90%;">docs/index.md</code> to change this page.</h2>
-  <a href="https://observablehq.com/framework/getting-started">Get started<span style="display: inline-block; margin-left: 0.25rem;">↗︎</span></a>
 </div>
-
 <div class="grid grid-cols-2" style="grid-auto-rows: 504px;">
   <div class="card">${
     resize((width) => Plot.plot({
-      title: "Your awesomeness over time 🚀",
+      title: "Price trends 🚀",
       subtitle: "Up and to the right!",
       width,
-      y: {grid: true, label: "Awesomeness"},
+      y: {grid: true, label: "Price"},
       marks: [
         Plot.ruleY([0]),
-        Plot.lineY(aapl, {x: "Date", y: "Close", tip: true})
+        Plot.lineY(calendar.filter((item)=>item.listing_id==3686 ), {x: "date", y: "price", tip: true})
       ]
     }))
   }</div>
@@ -78,12 +75,49 @@ toc: false
     }))
   }</div>
 </div>
+<div class="card" style="max-width: 640px;">
+<h2>Average Price across different date</h2>
+<h3>And months have 28–31 days</h3>
+${resize((width) => Plot.cell(averagePrices, {
+    x: (d) => d.date.getUTCDate(), 
+    y: (d) => d.date.getUTCMonth()+1, 
+    fill: "averagePrice", 
+    tip: true, 
+    inset: 0.5
+  }).plot({
+    width,
+    marginTop: 0, 
+    height: 240, 
+    padding: 0
+}))}
+</div>
 
 ```js
 const aapl = FileAttachment("aapl.csv").csv({typed: true});
 const penguins = FileAttachment("penguins.csv").csv({typed: true});
+let calendar = FileAttachment("calendar1.csv").csv({typed: true}).then(data => {
+  return data.map(d => {
+    d.date = new Date(d.date);
+    d.price = parseInt(d.price.replace("$", ""));
+    return d;
+  });
+})
 ```
+```js
+const groupedData = calendar.reduce((acc, item) => {
+  const date = item.date.toISOString().split('T')[0];
+  if (!acc[date]) {
+    acc[date] = [];
+  }
+  acc[date].push(item.price);
+  return acc;
+}, {});
 
+const averagePrices = Object.entries(groupedData).map(([date, prices]) => {
+  const averagePrice = prices.reduce((sum, price) => sum + price, 0) / prices.length;
+  return { date: new Date(date), averagePrice };
+});
+```
 ---
 
 ## Next steps
