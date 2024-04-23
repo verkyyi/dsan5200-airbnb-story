@@ -32,6 +32,10 @@ const color = Plot.scale({
     <span class="big">${launches.filter((d) => d.stateId === "US").length.toLocaleString("en-US")}</span>
   </div>
   <div class="card">
+    <h2>United States 🇺🇸</h2>
+    <span class="big">${launches.filter((d) => d.stateId === "US").length.toLocaleString("en-US")}</span>
+  </div>
+  <div class="card">
     <h2>Russia 🇷🇺 <span class="muted">/ Soviet Union</span></h2>
     <span class="big">${launches.filter((d) => d.stateId === "SU" || d.stateId === "RU").length.toLocaleString("en-US")}</span>
   </div>

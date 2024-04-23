@@ -11,7 +11,8 @@ export default {
       name: "Index",
       pages: [
         { name: "Overview", path: "/overview" },
-        { name: "Map", path: "/map"},
+        { name: "Data", path: "/data"},
+        { name: "Embed Html", path: "/map" },
         { name: "Conclusions", path: "/conclusions"}
       ]
     }

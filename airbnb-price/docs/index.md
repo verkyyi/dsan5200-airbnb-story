@@ -95,7 +95,7 @@ ${resize((width) => Plot.cell(averagePrices, {
 ```js
 const aapl = FileAttachment("aapl.csv").csv({typed: true});
 const penguins = FileAttachment("penguins.csv").csv({typed: true});
-let calendar = FileAttachment("calendar1.csv").csv({typed: true}).then(data => {
+let calendar = FileAttachment("data/calendar1.csv").csv({typed: true}).then(data => {
   return data.map(d => {
     d.date = new Date(d.date);
     d.price = parseInt(d.price.replace("$", ""));
