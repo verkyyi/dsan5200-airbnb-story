@@ -41,7 +41,15 @@
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	transform: translateY(-50%);
+}
 
+.graphic__vis iframe {
+	border: 1px dashed black;
+	top: 50%;
+	position: relative;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 
 .item circle {

@@ -84,8 +84,22 @@ window.createGraphic = function(graphicSelector) {
 		},
 		// Step 3
 		function step3() {
-			// update html inside graphic_vis
-			graphicVisEl.html('<iframe src="./sections/airbnb.html"></iframe>')
+			// remove the svg element from the graphic_vis element
+			graphicVisEl.selectAll('svg').remove()
+			// check whether the iframe element is already created
+			iframe = graphicVisEl.select('iframe').node()
+			// if the iframe element is not created, create it
+			if (!iframe) {
+				alert('iframe not created')
+				// Create a iframe element and append it to graphic_vis
+				iframe = document.createElement('iframe')
+					.attr('width', size + 'px')
+					.attr('height', size + 'px')
+				// set width and height of the iframe element
+				// append the iframe element to graphic_vis
+				graphicVisEl.node().appendChild(iframe)
+			}
+			iframe.src = './sections/airbnb.html'
 		}
 	]
 

@@ -13,6 +13,8 @@ export default {
         { name: "Overview", path: "/overview" },
         { name: "Data", path: "/data"},
         { name: "Embed Html", path: "/map" },
+        { name: "Embed Html1", path: "/map1" },
+        { name: "Embed Html2", path: "/map2" },
         { name: "Conclusions", path: "/conclusions"}
       ]
     }
