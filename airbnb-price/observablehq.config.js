@@ -10,12 +10,12 @@ export default {
     {
       name: "Index",
       pages: [
-        { name: "Overview", path: "/overview" },
-        { name: "Data", path: "/data"},
-        { name: "Embed Html", path: "/map" },
-        { name: "Embed Html1", path: "/map1" },
-        { name: "Embed Html2", path: "/map2" },
-        { name: "Conclusions", path: "/conclusions"}
+        { name: "Overview", path: "/index" },
+        { name: "Price Across Dates", path: "/price_across_dates" },
+        { name: "Map", path: "/map" },
+        { name: "Price Explore Map", path: "/local_map" },
+        { name: "Conclusions", path: "/cconclusions" },
+        { name: "Example", path: "/example" }
       ]
     }
   ],

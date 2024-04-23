@@ -1,149 +1,129 @@
 ---
+theme: dashboard
+title: Overview
 toc: false
 ---
 
-<style>
+# Data Overview 📉
 
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: var(--sans-serif);
-  margin: 4rem 0 8rem;
-  text-wrap: balance;
-  text-align: center;
-}
-
-.hero h1 {
-  margin: 2rem 0;
-  max-width: none;
-  font-size: 14vw;
-  font-weight: 900;
-  line-height: 1;
-  background: linear-gradient(30deg, var(--theme-foreground-focus), currentColor);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero h2 {
-  margin: 0;
-  max-width: 34em;
-  font-size: 20px;
-  font-style: initial;
-  font-weight: 500;
-  line-height: 1.5;
-  color: var(--theme-foreground-muted);
-}
-
-@media (min-width: 640px) {
-  .hero h1 {
-    font-size: 90px;
-  }
-}
-
-</style>
-
-<div class="hero">
-  <h1>Airbnb Price in DC</h1>
-</div>
-<div class="grid grid-cols-2" style="grid-auto-rows: 504px;">
-  <div class="card">${
-    resize((width) => Plot.plot({
-      title: "Price trends 🚀",
-      subtitle: "Up and to the right!",
-      width,
-      y: {grid: true, label: "Price"},
-      marks: [
-        Plot.ruleY([0]),
-        Plot.lineY(calendar.filter((item)=>item.listing_id==3686 ), {x: "date", y: "price", tip: true})
-      ]
-    }))
-  }</div>
-  <div class="card">${
-    resize((width) => Plot.plot({
-      title: "How big are penguins, anyway? 🐧",
-      width,
-      grid: true,
-      x: {label: "Body mass (g)"},
-      y: {label: "Flipper length (mm)"},
-      color: {legend: true},
-      marks: [
-        Plot.linearRegressionY(penguins, {x: "body_mass_g", y: "flipper_length_mm", stroke: "species"}),
-        Plot.dot(penguins, {x: "body_mass_g", y: "flipper_length_mm", stroke: "species", tip: true})
-      ]
-    }))
-  }</div>
-</div>
-<div class="card" style="max-width: 640px;">
-<h2>Average Price across different date</h2>
-<h3>And months have 28–31 days</h3>
-${resize((width) => Plot.cell(averagePrices, {
-    x: (d) => d.date.getUTCDate(), 
-    y: (d) => d.date.getUTCMonth()+1, 
-    fill: "averagePrice", 
-    tip: true, 
-    inset: 0.5
-  }).plot({
-    width,
-    marginTop: 0, 
-    height: 240, 
-    padding: 0
-}))}
-</div>
+<!-- Load and transform the data -->
 
 ```js
-const aapl = FileAttachment("aapl.csv").csv({typed: true});
-const penguins = FileAttachment("penguins.csv").csv({typed: true});
-let calendar = FileAttachment("data/calendar1.csv").csv({typed: true}).then(data => {
-  return data.map(d => {
-    d.date = new Date(d.date);
-    d.price = parseInt(d.price.replace("$", ""));
-    return d;
-  });
-})
+const listing = FileAttachment("data/listings.csv").csv({typed: true});
+const details = FileAttachment("data/listings_detailed.csv").csv({typed: true});
 ```
-```js
-const groupedData = calendar.reduce((acc, item) => {
-  const date = item.date.toISOString().split('T')[0];
-  if (!acc[date]) {
-    acc[date] = [];
-  }
-  acc[date].push(item.price);
-  return acc;
-}, {});
 
-const averagePrices = Object.entries(groupedData).map(([date, prices]) => {
-  const averagePrice = prices.reduce((sum, price) => sum + price, 0) / prices.length;
-  return { date: new Date(date), averagePrice };
+The dataset contains ${listing.length} Airbnb listings in Washington, DC. The listings include information such as the listing ID, host ID, neighbourhood, price, and more.
+
+<!-- ```js
+Inputs.table(listing)
+```
+
+```js
+Inputs.table(details)
+``` -->
+
+```js
+const dataPoints = listing.length;
+const prices = listing.map((d) => d.price);
+const maxPrice = Math.max(...prices);
+const minPrice = Math.min(...prices);
+const avgPrice = Math.round(d3.mean(prices));
+// show unique room types
+const roomTypes = [...new Set(listing.map((d) => d.room_type))];
+// group average price by room type
+const avgPriceByRoomType = roomTypes.map((roomType) => {
+  const prices = listing.filter((d) => d.room_type === roomType).map((d) => d.price);
+  return {
+    roomType,
+    avgPrice: Math.round(d3.mean(prices)),
+  };
 });
+const avgPrice_PrivateRoom = avgPriceByRoomType.find((d) => d.roomType === "Private room").avgPrice;
+const avgPrice_EntireHome = avgPriceByRoomType.find((d) => d.roomType === "Entire home/apt").avgPrice;
+const avgPrice_SharedRoom = avgPriceByRoomType.find((d) => d.roomType === "Shared room").avgPrice;
 ```
----
 
-## Next steps
-
-Here are some ideas of things you could try…
+```js
+function bedsCountChart(data, {width}) {
+  return Plot.plot({
+    title: "Beds Count",
+    width,
+    height: 300,
+    marginTop: 0,
+    marginLeft: 50,
+    x: {grid: true, label: "Launches"},
+    y: {label: null},
+    marks: [
+      Plot.rectX(data, Plot.groupY({x: "count"}, {y: "family", fill: "state", tip: true, sort: {y: "-x"}})),
+      Plot.ruleX([0])
+    ]
+  });
+}
+```
 
 <div class="grid grid-cols-4">
   <div class="card">
-    Chart your own data using <a href="https://observablehq.com/framework/lib/plot"><code>Plot</code></a> and <a href="https://observablehq.com/framework/files"><code>FileAttachment</code></a>. Make it responsive using <a href="https://observablehq.com/framework/display#responsive-display"><code>resize</code></a>.
+    <h2>Listing Count ☝️</h2>
+    <span class="big">${dataPoints.toLocaleString("en-US")}</span>
   </div>
   <div class="card">
-    Create a <a href="https://observablehq.com/framework/project-structure">new page</a> by adding a Markdown file (<code>whatever.md</code>) to the <code>docs</code> folder.
+    <h2>Price Range 🏷️</h2>
+    <span class="big">${minPrice.toLocaleString("en-US") + "~" + maxPrice.toLocaleString("en-US")
+  }</span>
   </div>
   <div class="card">
-    Add a drop-down menu using <a href="https://observablehq.com/framework/inputs/select"><code>Inputs.select</code></a> and use it to filter the data shown in a chart.
+    <h2>Average Price</h2>
+    <span class="big">${avgPrice.toLocaleString("en-US")}</span>
   </div>
   <div class="card">
-    Write a <a href="https://observablehq.com/framework/loaders">data loader</a> that queries a local database or API, generating a data snapshot on build.
+    <h2>Average Price (Entire Home/Apt)</h2>
+    <span class="big">${avgPrice_EntireHome.toLocaleString("en-US")}</span>
   </div>
   <div class="card">
-    Import a <a href="https://observablehq.com/framework/imports">recommended library</a> from npm, such as <a href="https://observablehq.com/framework/lib/leaflet">Leaflet</a>, <a href="https://observablehq.com/framework/lib/dot">GraphViz</a>, <a href="https://observablehq.com/framework/lib/tex">TeX</a>, or <a href="https://observablehq.com/framework/lib/duckdb">DuckDB</a>.
+    <h2>Average Price (Private Room)</h2>
+    <span class="big">${avgPrice_PrivateRoom.toLocaleString("en-US")}</span>
   </div>
   <div class="card">
-    Ask for help, or share your work or ideas, on the <a href="https://talk.observablehq.com/">Observable forum</a>.
+    <h2>Average Price (Shared Room)</h2>
+    <span class="big">${avgPrice_SharedRoom.toLocaleString("en-US")}</span>
   </div>
-  <div class="card">
-    Visit <a href="https://github.com/observablehq/framework">Framework on GitHub</a> and give us a star. Or file an issue if you’ve found a bug!
-  </div>
+</div>
+
+
+<div class="grid grid-cols-4">
+<div class="card">
+<h2>Price By Room Type 🏠</h2>
+
+```js
+// Use different color for each room type
+Plot.rectY(avgPriceByRoomType, {
+  x: "roomType", 
+  y: "avgPrice",
+  fill: "roomType",
+  }).plot()
+```
+
+</div>
+
+<div class = "card">
+<h2>Beds Count Distribution 🛏️</h2>
+
+```js
+// Histogram of beds count
+const bedroomCounts = details.map((d) => d.beds);
+const bedroomCountsHistogram = d3.rollup(
+  bedroomCounts,
+  (v) => v.length,
+  (d) => d
+);
+const bedroomCountsData = Array.from(bedroomCountsHistogram, ([key, value]) => ({beds: key, count: value}));
+display(Plot.barY(bedroomCountsData, {
+  x: "beds", 
+  y: "count",
+  fill: "count",
+}).plot())
+```
+
+</div>
 </div>
