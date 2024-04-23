@@ -90,16 +90,21 @@ window.createGraphic = function(graphicSelector) {
 			iframe = graphicVisEl.select('iframe').node()
 			// if the iframe element is not created, create it
 			if (!iframe) {
-				alert('iframe not created')
 				// Create a iframe element and append it to graphic_vis
-				iframe = document.createElement('iframe')
+				iframe = graphicVisEl.append('iframe')
 					.attr('width', size + 'px')
 					.attr('height', size + 'px')
-				// set width and height of the iframe element
-				// append the iframe element to graphic_vis
-				graphicVisEl.node().appendChild(iframe)
+					.attr('src', './sections/airbnb.html')
 			}
 			iframe.src = './sections/airbnb.html'
+		},
+
+		// Step 4
+		function step4() {
+			// get the iframe element
+			iframe = graphicVisEl.select('iframe').node()
+			// set the src attribute of the iframe element to the airbnb.html
+			iframe.src = ''
 		}
 	]
 
