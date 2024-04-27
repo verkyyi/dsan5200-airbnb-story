@@ -22,11 +22,13 @@ const neighborhoodNames = neighborhoodsData.features.map((d) => d.properties.nei
 const neighborhood = view(Inputs.select(neighborhoodNames));
 // add price range slider
 const minPrice = view(Inputs.range([0, 1000], {
+  title: "Min Price",
   step: 10, 
   value: 100,
   description: "Min Price",
 }));
 const maxPrice = view(Inputs.range([0, 1000], {
+  title: "Max Price",
   step: 10, 
   value: 200,
   description: "Max Price",
@@ -57,6 +59,7 @@ const filteredData = listingsData.filter((d) => {
     && d.price >= minPrice && d.price <= maxPrice
   );
 });
+
 const mean_lat = d3.mean(filteredData, d => d.latitude);
 const mean_lon = d3.mean(filteredData, d => d.longitude);
 map.setView([mean_lat, mean_lon], 13);
@@ -86,11 +89,15 @@ L.geoJson(neighborhoodsData, {
         layer.setStyle({
           fillOpacity: 0.5,
         });
+        // add popup
+        layer.bindPopup(feature.properties.neighbourhood).openPopup();
       },
       mouseout: (e) => {
         layer.setStyle({
           fillOpacity: 0.1,
         });
+        // remove popup
+        layer.closePopup();
       },
       click: (e) => {
         //
