@@ -11,10 +11,9 @@ export default {
       name: "Index",
       pages: [
         { name: "Overview", path: "/index" },
-        { name: "Price Across Dates", path: "/price_across_dates" },
         { name: "Exploratory Data By Plots", path: "/plots" },
         { name: "Price Explore Map", path: "/local_map" },
-        { name: "Key Feature Analysisgit", path: "/price_across_neighborhood" },
+        { name: "Key Feature Analysis", path: "/price_across_neighborhood" },
         { name: "Conclusions", path: "/conclusions" },
         { name: "References", path: "/references" },
       ]
