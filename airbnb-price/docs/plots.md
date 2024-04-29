@@ -6,7 +6,7 @@ Our visual tale starts with an interactive bubble plot that answers the basic qu
 
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
   <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%; overflow: scroll;">
-    <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/scatter.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%;"></iframe>
+    <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/scatterplot.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%;"></iframe>
   </div>
 </div>
 
@@ -20,13 +20,14 @@ This graphic makes it clear that there is more to the relationship between prici
   <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/parallel.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%; overflow: hidden;"></iframe>
 </div>
 
-<div>
-Plot 3's 3D scatter plot again telling the absence of a strong correlation between prices and conventional property features like bedrooms and baths. The diverse price points suggest that there are additional layers to the story.
-</div>
-
 </br>
 
 <h2>Relationship between price with number of baths and bedrooms</h2>
+
+<div>
+We examine a 3D scatter plot that is color-coded by ratings and offers an advanced examination of the number of bedrooms and bathrooms of a house against the pricing background. Because the plot is three-dimensional, you can interact with it dynamically by rotating it to see the data from various perspectives or by zooming in to look more closely at specific grouped locations. A detailed overview of every data input is provided by hovering over any point on the plot, which displays information about the listing such as price, number of bedrooms and bathrooms, and rating.
+The results of this plot make it evident that there is less of the expectedly significant link between a listing's price and its fundamental characteristics, like the number of bedrooms and bathrooms.  Similar physical attributes are found in listings across a wide range of pricing points, and the color variation shows that high ratings are found in listings at various price points, suggesting that elements other than the physical space also play a role in visitors' evaluation.  Because of this complexity, hosts are forced to think about a wider range of value-adding amenities and make calculated price decisions that fit the varied tastes and expectations of their visitors.
+</div>
 
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
   <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/3dscatter.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%; overflow: hidden;"></iframe>
