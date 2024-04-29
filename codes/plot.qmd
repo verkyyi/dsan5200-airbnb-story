@@ -50,6 +50,8 @@ fig.update_layout(
     paper_bgcolor='whitesmoke' # Outer background color
 )
 fig.show()
+
+fig.write_html("parallel.html")
 ```
 
 ```{python}
@@ -57,6 +59,7 @@ fig = px.scatter_3d(df_cleaned, x='price', y='bedrooms', z='baths',
                     color='rating', size='rating',
                     color_continuous_scale=px.colors.qualitative.Pastel1)
 fig.show()
+fig.write_html("3dscatter.html")
 ```
 
 ```{python}
@@ -68,6 +71,7 @@ fig.update_layout(
     paper_bgcolor='whitesmoke' # Outer background color
 )
 fig.show()
+fig.write_html("scatter2.html")
 ```
 
 ```{python}
@@ -78,11 +82,13 @@ fig.update_layout(
     plot_bgcolor='whitesmoke',  # Inner background color
     paper_bgcolor='whitesmoke')
 fig.show()
+fig.write_html("box.html")
 ```
 
 ```{python}
 fig = px.density_heatmap(df_cleaned, x="bedrooms", y="baths", marginal_x="rug", marginal_y="histogram",color_continuous_scale=px.colors.qualitative.Pastel1)
 fig.show()
+fig.write_html("density.html")
 ```
 
 
@@ -93,4 +99,5 @@ fig.update_layout(
     paper_bgcolor='whitesmoke' # Outer background color
 )
 fig.show()
+fig.write_html("density2.html")
 ```
