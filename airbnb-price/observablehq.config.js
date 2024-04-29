@@ -12,12 +12,13 @@ export default {
       pages: [
         { name: "Overview", path: "/index" },
         { name: "Price Across Dates", path: "/price_across_dates" },
-        { name: "Plots", path: "/plots" },
+        { name: "Exploratory Data By Plots", path: "/plots" },
         { name: "Price Explore Map", path: "/local_map" },
+        { name: "Price and Neighborhood", path: "/priver_across_neighborhood" },
         { name: "Review Text Analysis", path: "/review_analysis" },
         { name: "Conclusions", path: "/conclusions" },
         { name: "References", path: "/references" },
-        { name: "Example", path: "/example" }
+        { name: "Example(Remove Before Submit)", path: "/example" }
       ]
     }
   ],

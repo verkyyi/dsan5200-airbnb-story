@@ -12,6 +12,7 @@
     "@observablehq/framework": "^1.6.0",
     "d3-dsv": "^3.0.1",
     "d3-time-format": "^4.1.0",
+    "observable": "^2.1.4",
     "plotly.js": "^2.32.0",
     "plotly.js-dist": "^2.32.0"
   },

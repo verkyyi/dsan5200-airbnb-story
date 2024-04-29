@@ -11,17 +11,8 @@ toc: false
 ```js
 const listing = FileAttachment("data/listings.csv").csv({typed: true});
 const details = FileAttachment("data/listings_detailed.csv").csv({typed: true});
+const listing_cleaned = FileAttachment("data/listings_cleaned.csv").csv({typed: true});
 ```
-
-The dataset contains ${listing.length} Airbnb listings in Washington, DC. The listings include information such as the listing ID, host ID, neighbourhood, price, and more.
-
-<!-- ```js
-Inputs.table(listing)
-```
-
-```js
-Inputs.table(details)
-``` -->
 
 ```js
 const dataPoints = listing.length;
@@ -42,6 +33,8 @@ const avgPriceByRoomType = roomTypes.map((roomType) => {
 const avgPrice_PrivateRoom = avgPriceByRoomType.find((d) => d.roomType === "Private room").avgPrice;
 const avgPrice_EntireHome = avgPriceByRoomType.find((d) => d.roomType === "Entire home/apt").avgPrice;
 const avgPrice_SharedRoom = avgPriceByRoomType.find((d) => d.roomType === "Shared room").avgPrice;
+
+// group listings by neighbourhood
 ```
 
 ```js
@@ -55,14 +48,18 @@ function bedsCountChart(data, {width}) {
     x: {grid: true, label: "Launches"},
     y: {label: null},
     marks: [
-      Plot.rectX(data, Plot.groupY({x: "count"}, {y: "family", fill: "state", tip: true, sort: {y: "-x"}})),
+      Plot.rectX(data, Plot.groupY({x: "count"}, {y: "count", fill: "state", tip: true, sort: {y: "-x"}})),
       Plot.ruleX([0])
     ]
   });
 }
 ```
 
-<div class="grid grid-cols-4">
+<div>
+Determining the ideal pricing for a listing on Airbnb's dynamic marketplace is a combination of art and science. Many elements need to be taken into account when developing a pricing plan, ranging from market demand to subtle hints gleaned from visitor feedback. Our comprehensive visual analysis delves deeply into the several factors that influence price, giving hosts a solid data-based basis to make wise choices that strike a balance between profit and attraction.
+</div>
+
+<div class="grid grid-cols-2">
   <div class="card">
     <h2>Listing Count ☝️</h2>
     <span class="big">${dataPoints.toLocaleString("en-US")}</span>
@@ -91,7 +88,7 @@ function bedsCountChart(data, {width}) {
 </div>
 
 
-<div class="grid grid-cols-4">
+<div class="grid grid-cols-2">
 <div class="card">
 <h2>Price By Room Type 🏠</h2>
 
@@ -101,7 +98,7 @@ Plot.rectY(avgPriceByRoomType, {
   x: "roomType", 
   y: "avgPrice",
   fill: "roomType",
-  }).plot()
+}).plot()
 ```
 
 </div>

@@ -18,7 +18,11 @@ const launches = FileAttachment("data/launches.csv").csv({typed: true});
 const color = Plot.scale({
   color: {
     type: "categorical",
-    domain: d3.groupSort(launches, (D) => -D.length, (d) => d.state).filter((d) => d !== "Other"),
+    domain: d3.groupSort(
+      launches, 
+      (D) => -D.length, 
+      (d) => d.state
+    ).filter((d) => d !== "Other"),
     unknown: "var(--theme-foreground-muted)"
   }
 });
@@ -43,25 +47,36 @@ const color = Plot.scale({
     <h2>China 🇨🇳</h2>
     <span class="big">${launches.filter((d) => d.stateId === "CN").length.toLocaleString("en-US")}</span>
   </div>
-  <div class="card">
-    <h2>Other</h2>
-    <span class="big">${launches.filter((d) => d.stateId !== "US" && d.stateId !== "SU" && d.stateId !== "RU" && d.stateId !== "CN").length.toLocaleString("en-US")}</span>
-  </div>
 </div>
+
+<!-- Show a table of the data -->
+
+```js
+Inputs.table(launches)
+```
 
 <!-- Plot of launch history -->
 
 ```js
 function launchTimeline(data, {width} = {}) {
   return Plot.plot({
-    title: "Launches over the years",
-    width,
-    height: 300,
-    y: {grid: true, label: "Launches"},
-    color: {...color, legend: true},
+    title: "Launches over the years", // title of the plot
+    width, // width of the plot
+    height: 300, // height of the plot
+    y: {grid: true, label: "Launches"}, // y-axis configuration
+    color: {...color, legend: true}, // color configuration
     marks: [
-      Plot.rectY(data, Plot.binX({y: "count"}, {x: "date", fill: "state", interval: "year", tip: true})),
-      Plot.ruleY([0])
+      Plot.rectY( // plot rectangles
+        data,  // data
+        Plot.binX({ // bin data by year
+          y: "count" // y-axis value
+        }, {
+          x: "date",  // x-axis value
+          fill: "state", // fill color
+          interval: "year",  // interval
+          tip: true // show tooltip
+        })),
+      Plot.ruleY([0]) // plot horizontal line at y=0
     ]
   });
 }
