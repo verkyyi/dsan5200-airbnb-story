@@ -13,7 +13,6 @@ export default {
         { name: "Overview", path: "/index" },
         { name: "Price Across Dates", path: "/price_across_dates" },
         { name: "Plots", path: "/plots" },
-        { name: "Map", path: "/map" },
         { name: "Price Explore Map", path: "/local_map" },
         { name: "Conclusions", path: "/cconclusions" },
         { name: "References", path: "/references" },
