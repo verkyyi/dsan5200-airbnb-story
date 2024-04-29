@@ -14,7 +14,7 @@ export default {
         { name: "Price Across Dates", path: "/price_across_dates" },
         { name: "Exploratory Data By Plots", path: "/plots" },
         { name: "Price Explore Map", path: "/local_map" },
-        { name: "Price and Neighborhood", path: "/priver_across_neighborhood" },
+        { name: "Price and Neighborhood", path: "/price_across_neighborhood" },
         { name: "Review Text Analysis", path: "/review_analysis" },
         { name: "Conclusions", path: "/conclusions" },
         { name: "References", path: "/references" },

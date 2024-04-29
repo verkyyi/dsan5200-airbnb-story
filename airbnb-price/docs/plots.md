@@ -5,15 +5,18 @@ Our visual tale starts with an interactive bubble plot that answers the basic qu
 </div>
 
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
-  <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/scatter.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%; overflow: hidden;"></iframe>
+  <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%; overflow: scroll;">
+    <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/scatter.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%;"></iframe>
+  </div>
 </div>
 
 ## Properties affecting pricing
 
-<div>We then analyze how specifics about the property affect pricing. The second plot tells the tale of several interconnected elements that come together in a complex ballet: cost, ratings, and bathroom and bedroom characteristics. It dispels the notion that these factors influence pricing, encouraging us to look more broadly.</div>
+<div>The parallel coordinates plot of the correlation between many parameters, including price, number of bedrooms, bathrooms, and rating for Airbnb listings. Each line is a single listing, and the rating is reflected in the color gradient. The item's position on the axis corresponds to its features and price. This kind of visualization is especially good at displaying multidimensional interactions and enables the concurrent observation of patterns across several variables. 
+This graphic makes it clear that there is more to the relationship between pricing and the mentioned criteria than meets the eye. The lines intersect and crisscross to show how different properties with the same attributes can have quite different ratings and prices. Significant price variations can occur for listings with identical numbers of bedrooms and bathrooms, and greater prices are not invariably associated with higher ratings. These results imply that, although ratings, bathrooms, and bedrooms are significant, they are only a small portion of the greater mosaic of factors that affect pricing. As a result, we should look beyond these conventional measurements to find additional significant variables in the Airbnb market.</div>
 
 
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+<div style="position: relative; width: 100%; height: 100%; padding-bottom: 56.25%;">
   <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/parallel.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%; overflow: hidden;"></iframe>
 </div>
 
