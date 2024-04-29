@@ -32,6 +32,12 @@ Plot 3's 3D scatter plot again telling the absence of a strong correlation betwe
 </br>
 
 ## Price distribution among neighborhoods
+
+<div>
+Knowing the popular accommodation types sets the stage for an in-depth look at the price ranges within these neighborhoods, which could influence a host's decision on where to position their price point.
+The box plot underscores the variability within each neighborhood, detailing the high and low ends of pricing. Hosts can use this information to position their listing within the spectrum, considering both average rates and the range of what guests pay.
+</div>
+
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
   <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/box.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%; overflow: hidden;"></iframe>
 </div>

@@ -119,3 +119,7 @@ filteredData.forEach((d) => {
     .addTo(map);
 });
 ```
+
+<div>
+Finally, we present an interactive plot, a practical tool for hosts. By selecting their neighborhood, hosts can survey the pricing landscape of their peers, allowing them to position their listing smartly within the local context. This plot is not just a static image but a gateway to an actionable resource, enabling hosts to refine their pricing strategy with real-time data.
+</div>
