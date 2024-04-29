@@ -1,58 +1,40 @@
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+## Airbnb Listings in Washington, DC 🏠
 
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+  <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/scatter.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%; overflow: hidden;"></iframe>
+</div>
 
-```js
-const df = FileAttachment("data/listings_cleaned.csv").csv()
-```
+## 3D Scatter Plot
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+  <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/3dscatter.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%; overflow: hidden;"></iframe>
+</div>
 
-# Plots
+## Another Scatter Plot
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+  <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/scatter2.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%; overflow: hidden;"></iframe>
+</div>
 
-```js
-// get unique neighbourhoods
-const neighbourhoods = [...new Set(df.map(row => row.neighbourhood))];
-// create a color map using the neighbourhoods
-const colorMap = {};
-neighbourhoods.forEach((neighbourhood, i) => {
-  colorMap[neighbourhood] = i;
-});
-const data = [{
-  type: 'scatter',
-  mode: 'markers',
-  x: df.map(row => row.price),
-  y: df.map(row => row.rating),
-  text: df.map(row => row.neighbourhood), // hover text
-  marker: {
-    size: df.map(row => row.minimum_nights),
-    color: df.map(row => colorMap[row.neighbourhood]), // set color to an array/list of data
-    colorscale: 'Viridis', // You can specify your own color scale
-    sizemode: 'area',
-    sizeref: 1,
-  },
-  transforms: [{
-    type: 'sort',
-    target: 'y',
-    order: 'descending'
-  }]
-}];
+## Box Plot
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+  <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/box.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%; overflow: hidden;"></iframe>
+</div>
 
-const layout = {
-  xaxis: {
-    type: 'log',
-    title: 'Price'
-  },
-  yaxis: {
-    title: 'Rating'
-  },
-  plot_bgcolor: 'whitesmoke',
-  paper_bgcolor: 'whitesmoke',
-  margin: { t: 0 } // optional: reduce space on the top of the plot
-};
-const myDiv = display(document.createElement("mydiv"));
-Plotly.newPlot(myDiv, data, layout);
-```
-## Price vs Rating
-![](imgs/price_rating.png)
+## Density Plot 1
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+  <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/density.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%; overflow: hidden;"></iframe>
+</div>
 
+## Density Plot 2
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+  <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/density2.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%; overflow: hidden;"></iframe>
+</div>
 
-## Rating factors
-![](imgs/rating_factors.png)
+## Parallel Plot
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+  <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/parallel.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%; overflow: hidden;"></iframe>
+</div>
+
+## Average Price by Neighborhood
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+  <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/average_price_map.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%; overflow: hidden;"></iframe> 
+</div>

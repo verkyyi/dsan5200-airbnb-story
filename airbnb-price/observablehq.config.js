@@ -14,7 +14,8 @@ export default {
         { name: "Price Across Dates", path: "/price_across_dates" },
         { name: "Plots", path: "/plots" },
         { name: "Price Explore Map", path: "/local_map" },
-        { name: "Conclusions", path: "/cconclusions" },
+        { name: "Review Text Analysis", path: "/review_analysis" },
+        { name: "Conclusions", path: "/conclusions" },
         { name: "References", path: "/references" },
         { name: "Example", path: "/example" }
       ]
