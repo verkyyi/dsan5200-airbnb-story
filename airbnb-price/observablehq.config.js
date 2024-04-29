@@ -14,11 +14,9 @@ export default {
         { name: "Price Across Dates", path: "/price_across_dates" },
         { name: "Exploratory Data By Plots", path: "/plots" },
         { name: "Price Explore Map", path: "/local_map" },
-        { name: "Price and Neighborhood", path: "/price_across_neighborhood" },
-        { name: "Review Text Analysis", path: "/review_analysis" },
+        { name: "Key Feature Analysisgit", path: "/price_across_neighborhood" },
         { name: "Conclusions", path: "/conclusions" },
         { name: "References", path: "/references" },
-        { name: "Example(Remove Before Submit)", path: "/example" }
       ]
     }
   ],
