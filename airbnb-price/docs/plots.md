@@ -1,7 +1,7 @@
 ## Airbnb Listings in Washington, DC 🏠
 
 <div>
-We begin our story with a fundamental question: "Why should hosts consider their pricing strategy?" A strange fact is made clear by the first plot: there is, at most, a shaky correlation between price and guest ratings or minimum stay requirements. An investigation into the many factors that influence listing pricing is warranted by a dense cluster of postings that fall below the $1,000 criterion.
+Our visual tale starts with an interactive bubble plot that answers the basic query, "Why should hosts consider their pricing strategy?" The plot's depth and versatility are designed in such a way that users can zoom in on particular price ranges, filter or isolate neighborhoods of interest, then double-click to return to the entire view. Hosts can learn more about a particular listing's neighborhood, price, rating, and required number of nights by swiping over each bubble. This feature provides a detailed perspective of the data in addition to highlighting an important finding: there is, at most, a weak association between pricing and minimum night stays or guest ratings. The plot prominently features a cluster of listings under $1,000, casting doubt on the notion that listings with greater prices are invariably accompanied by higher ratings or longer stays. It also encourages a more thorough examination of the numerous variables that influence a listing's value.
 </div>
 
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">

@@ -45,6 +45,7 @@ toc: false
 </style>
 
 <h1>Airbnb Price Trends Throughout the Year</h1>
+
 <div class="grid grid-cols-2" style="grid-auto-rows: 504px;">
   <div class="card">${
     resize((width) => Plot.plot({
@@ -59,6 +60,7 @@ toc: false
     }))
   }</div>
 <div class="card" style="max-width: 640px;">
+
 <h2>Average Price across different date</h2>
 <h3>And months have 28–31 days</h3>
 ${resize((width) => Plot.cell(averagePrices, {
