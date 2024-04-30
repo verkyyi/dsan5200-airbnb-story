@@ -11,7 +11,6 @@ toc: false
 ```js
 const listing = FileAttachment("data/listings.csv").csv({typed: true});
 const details = FileAttachment("data/listings_detailed.csv").csv({typed: true});
-const listing_cleaned = FileAttachment("data/listings_cleaned.csv").csv({typed: true});
 ```
 
 ```js
@@ -111,11 +110,19 @@ selection[0]
 
 ```js
 // Use different color for each room type
-Plot.rectY(avgPriceByRoomType, {
-  x: "roomType", 
-  y: "avgPrice",
-  fill: "roomType",
-}).plot()
+Plot.plot(
+  {
+    marks: [
+      Plot.rectY(avgPriceByRoomType, {
+        x: "roomType", 
+        y: "avgPrice",
+        fill: '#7D8BE0'
+      }),
+    ],
+    x: {label: "Room Type"},
+    y: {label: "Average Price"}
+  }
+)
 ```
 
 </div>
@@ -144,7 +151,7 @@ bedroomCountsData = bedroomCountsData.filter((d) => d.beds !== null);
 display(Plot.barY(bedroomCountsData, {
   x: "beds", 
   y: "count",
-  fill: "#6CC5B0",
+  fill: "#7D8BE0",
 }).plot())
 ```
 

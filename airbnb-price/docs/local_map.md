@@ -73,10 +73,10 @@ map.eachLayer((layer) => {
 // add choropleth layer to the map
 L.geoJson(neighborhoodsData, {
   style: {
-    color: "yellow",
-    weight: 1,
+    color: "#9DA8E6",
+    stroke: false,
+    weight: 0.1,
     fillOpacity: 0.1,
-    borderOpacity: 0.5,
     index: 1,
   },
 }).addTo(map);

@@ -5,6 +5,7 @@ const listing_cleaned = FileAttachment("data/listings_cleaned.csv").csv({typed: 
 <!-- Plot of launch vehicles -->
 
 ```js
+const color_map = ["#EE7EA0", "#7D8BE0", "#D5EDF8", "#9A81B0", "#BE715B", "#E5DACA","#EA7D70","#FFD7D6",  "#FFAFAE"]
 function popularNeighborhoods(data, {width}) {
   return Plot.plot({
     title: "Popular Neighborhoods",
@@ -12,28 +13,23 @@ function popularNeighborhoods(data, {width}) {
     height: 500,
     marginTop: 0,
     marginLeft: 150,
-    x: {
-      grid: true, 
-      label: "Neighborhood",
-      tickLabel: {
-        angle: -45,
-        align: "right"
-      },
+    color: {
+      legend: true,
+      range: color_map
     },
-    color: {legend: true},
     marks: [
       Plot.rectX(
         data, 
         Plot.groupY({
           x: "count",
-          }, {
-            y: (d) => d.neighbourhood.split(",")[0], 
-            fill: "room_type", 
-            tip: true, 
-            sort: {y: "-x"},
-          })),
+        }, {
+          y: (d) => d.neighbourhood.split(",")[0], 
+          fill: 'room_type', 
+          tip: true, 
+          sort: {y: "-x"},
+        })),
       Plot.ruleX([0])
-    ]
+    ],
   });
 }
 ```
@@ -86,7 +82,7 @@ With 'location' emerging as a premium factor from the word cloud, we are compell
 ### Maps
 
 <div>
-Our search for influential features brings us to the fourth plot, where the narrative takes a geographical turn. This visualization showcases the average prices across different neighborhoods, revealing stark contrasts. Location emerges as a pivotal factor, with the potential to swing pricing significantly. This insight is crucial for hosts as they consider their pricing in relation to their immediate market environment. From this choropleth map, the user can easily see the color range, with green representing lower price and orange representing higher price, and click on the interested region to know the name and detailed price information. Price-sensitive users can quickly pick out the lowest average price region.
+Our search for influential features brings us to the fourth plot, where the narrative takes a geographical turn. This visualization showcases the average prices across different neighborhoods, revealing stark contrasts. Location emerges as a pivotal factor, with the potential to swing pricing significantly. This insight is crucial for hosts as they consider their pricing in relation to their immediate market environment. From this choropleth map, the user can easily see the color range, with white representing lower price and blue representing higher price, and click on the interested region to know the name and detailed price information. Price-sensitive users can quickly pick out the lowest average price region.
 </div>
 
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
