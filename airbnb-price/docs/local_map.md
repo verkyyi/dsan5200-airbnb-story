@@ -19,19 +19,20 @@ const neighborhoodNames = neighborhoodsData.features.map((d) => d.properties.nei
 
 ```js
 // add neighborhood selector
-const neighborhood = view(Inputs.select(neighborhoodNames));
+const neighborhood = view(Inputs.select(neighborhoodNames, {
+  label: "Neighborhood",
+  value: "Union Station, Stanton Park, Kingman Park",
+}));
 // add price range slider
 const minPrice = view(Inputs.range([0, 1000], {
-  title: "Min Price",
-  step: 10, 
+  label : "Min Price",
+  step: 1, 
   value: 100,
-  description: "Min Price",
 }));
 const maxPrice = view(Inputs.range([0, 1000], {
-  title: "Max Price",
-  step: 10, 
+  label: "Max Price",
+  step: 1, 
   value: 200,
-  description: "Max Price",
 }));
 ```
 

@@ -5,7 +5,7 @@ const listing_cleaned = FileAttachment("data/listings_cleaned.csv").csv({typed: 
 <!-- Plot of launch vehicles -->
 
 ```js
-const color_map = ["#EE7EA0", "#7D8BE0", "#D5EDF8", "#9A81B0", "#BE715B", "#E5DACA","#EA7D70","#FFD7D6",  "#FFAFAE"]
+const color_map = ["#7D8BE0", "#D5EDF8", "#9A81B0", "#BE715B", "#E5DACA","#EA7D70","#FFD7D6",  "#FFAFAE"]
 function popularNeighborhoods(data, {width}) {
   return Plot.plot({
     title: "Popular Neighborhoods",
@@ -63,7 +63,7 @@ Knowing the popular accommodation types sets the stage for an in-depth look at t
 The box plot underscores the variability within each neighborhood, detailing the high and low ends of pricing. Hosts can use this information to position their listing within the spectrum, considering both average rates and the range of what guests pay.
 </div>
 
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+<div class="card" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
   <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/box.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%; overflow: hidden;"></iframe>
 </div>
 
@@ -85,6 +85,6 @@ With 'location' emerging as a premium factor from the word cloud, we are compell
 Our search for influential features brings us to the fourth plot, where the narrative takes a geographical turn. This visualization showcases the average prices across different neighborhoods, revealing stark contrasts. Location emerges as a pivotal factor, with the potential to swing pricing significantly. This insight is crucial for hosts as they consider their pricing in relation to their immediate market environment. From this choropleth map, the user can easily see the color range, with white representing lower price and blue representing higher price, and click on the interested region to know the name and detailed price information. Price-sensitive users can quickly pick out the lowest average price region.
 </div>
 
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+<div class = "card" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
   <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/average_price_map.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%; overflow: hidden;"></iframe> 
 </div>
