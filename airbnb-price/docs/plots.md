@@ -25,20 +25,8 @@ This graphic makes it clear that there is more to the relationship between prici
 <h2>Relationship between price with number of baths and bedrooms</h2>
 
 <div>
-We examine a 3D scatter plot that is color-coded by ratings and offers an advanced examination of the number of bedrooms and bathrooms of a house against the pricing background. Because the plot is three-dimensional, you can interact with it dynamically by rotating it to see the data from various perspectives or by zooming in to look more closely at specific grouped locations. A detailed overview of every data input is provided by hovering over any point on the plot, which displays information about the listing such as price, number of bedrooms and bathrooms, and rating.
-The results of this plot make it evident that there is less of the expectedly significant link between a listing's price and its fundamental characteristics, like the number of bedrooms and bathrooms.  Similar physical attributes are found in listings across a wide range of pricing points, and the color variation shows that high ratings are found in listings at various price points, suggesting that elements other than the physical space also play a role in visitors' evaluation.  Because of this complexity, hosts are forced to think about a wider range of value-adding amenities and make calculated price decisions that fit the varied tastes and expectations of their visitors.
-</div>
-
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
-  <iframe src="https://verkyyi.github.io/dsan5200-airbnb-story/3dscatter.html" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%; overflow: hidden;"></iframe>
-</div>
-
-</br>
-
-<h2>Relationship between price with number of baths and bedrooms</h2>
-
-<div>
-To clarify the relationship between price with number of baths and bedrooms, the forth heatmap here zooms in on the majority of house types - predominantly one-bedroom and one-bathroom listings. Here, we observe that if these features were the main drivers of price, we wouldn't witness such a broad price range spanning from $0 to $1k. Instead, we'd see a concentrated cluster, implying that there must be other, less visible forces at play.
+We look at a heatmap that offers a visual analysis of the cost and commonality of listings according to the number of bedrooms and bathrooms. The color intensity on this heatmap depicts the count of listings with those combinations, while the x-axis displays the number of bedrooms and the y-axis the number of bathrooms. In order to interact with the plot, users can double-click to zoom back out to a more expansive perspective or pick individual locations to zoom in for a thorough view of specific combinations. When you move the mouse pointer over individual blocks, you can see the precise number of listings with that combination of bedrooms and bathrooms.
+This plot illustrates how costs are not always directly correlated with the number of bedrooms and bathrooms; instead, the relationship is more complex. Even among postings with the same number of bedrooms and bathrooms, there is a significant price variation, indicating that other considerations may be at play when setting prices. Users can investigate these patterns in more detail thanks to the zoom and hover functions, which may reveal factors other than the properties' physical characteristics that are at work.
 </div>
 
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">

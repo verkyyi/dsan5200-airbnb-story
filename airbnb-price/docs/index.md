@@ -48,7 +48,7 @@ function bedsCountChart(data, {width}) {
     x: {grid: true, label: "Launches"},
     y: {label: null},
     marks: [
-      Plot.rectX(data, Plot.groupY({x: "count"}, {y: "count", fill: "state", tip: true, sort: {y: "-x"}})),
+      Plot.rectX(data, Plot.groupY({x: "count"}, {y: "count", tip: true, sort: {y: "-x"}})),
       Plot.ruleX([0])
     ]
   });
@@ -131,11 +131,20 @@ const bedroomCountsHistogram = d3.rollup(
   (v) => v.length,
   (d) => d
 );
-const bedroomCountsData = Array.from(bedroomCountsHistogram, ([key, value]) => ({beds: key, count: value}));
+let bedroomCountsData = Array.from(bedroomCountsHistogram, ([key, value]) => ({beds: key, count: value}));
+// fill the data when there is no points for a specific bed count
+for (let i = 0; i <= 20 ; i++) {
+  if (!bedroomCountsData.find((d) => d.beds === i)) {
+    bedroomCountsData.push({beds: i, count: 0});
+  }
+}
+// filter out rows with null beds
+bedroomCountsData = bedroomCountsData.filter((d) => d.beds !== null);
+
 display(Plot.barY(bedroomCountsData, {
   x: "beds", 
   y: "count",
-  fill: "count",
+  fill: "#6CC5B0",
 }).plot())
 ```
 
